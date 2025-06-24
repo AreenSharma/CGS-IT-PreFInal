@@ -44,10 +44,10 @@ const HomePage = () => {
             alt="CGS IT Logo"
             style={{
               position: "absolute",
-              top: "2rem",
+              top: "-1rem", // Adjusted top to -1rem
               left: "2rem",
-              height: "6rem", // Enlarged size
-              maxWidth: "10rem", // Ensure responsiveness
+              height: "9rem", // Set height to 9rem
+              maxWidth: "12rem", // Ensure responsiveness
               filter: "brightness(0) invert(1)",
               zIndex: 1,
             }}
@@ -84,7 +84,7 @@ const HomePage = () => {
           }}
         >
           <h2 style={{ fontSize: "2rem", fontWeight: "bold" }}>
-            Part 2 Description dena hai
+            Part 2 Description dena
           </h2>
         </section>
       </div>
