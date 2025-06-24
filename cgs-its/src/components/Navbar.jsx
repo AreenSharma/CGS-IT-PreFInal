@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { RiMenuLine, RiCloseLine } from "@remixicon/react";
+import { RiMenuLine, RiCloseLine } from "react-icons/ri";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
+  const { pathname } = useLocation();
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -16,56 +16,51 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="bg-gradient-to-r from-gray-900 to-gray-800 text-white fixed top-0 left-0 right-0 z-50 shadow-md">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <Link to="/" className="text-2xl font-bold text-blue-400">
-          CGS IT
-        </Link>
+    <header className="fixed top-6 left-0 right-0 z-50 flex justify-center">
+      <nav className="flex space-x-6 bg-black/60 p-4 rounded-full backdrop-blur-md">
+        {navItems.map((item) => (
+          <Link
+            key={item.href}
+            to={item.href}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+              pathname === item.href
+                ? "bg-white/20 text-white"
+                : "text-white hover:bg-white/10"
+            }`}
+          >
+            {item.name}
+          </Link>
+        ))}
+      </nav>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-6">
+      {/* Mobile toggle */}
+      <div className="lg:hidden absolute top-4 right-4">
+        <button
+          className="p-2 text-white"
+          onClick={() => setIsOpen((o) => !o)}
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <RiCloseLine size={24} /> : <RiMenuLine size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="lg:hidden fixed inset-0 bg-black/80 backdrop-blur-lg flex flex-col items-center justify-center space-y-4">
           {navItems.map((item) => (
             <Link
-              key={item.name}
+              key={item.href}
               to={item.href}
-              className={`hover:text-blue-400 ${
-                location.pathname === item.href ? "text-blue-400" : ""
+              onClick={() => setIsOpen(false)}
+              className={`text-white text-lg font-medium transition ${
+                pathname === item.href ? "underline" : "hover:underline"
               }`}
             >
               {item.name}
             </Link>
           ))}
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden"
-        >
-          {isMenuOpen ? <RiCloseLine className="w-6 h-6" /> : <RiMenuLine className="w-6 h-6" />}
-        </button>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="absolute top-16 left-0 right-0 bg-gray-900 text-white">
-            <nav className="flex flex-col items-center space-y-4 py-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={`hover:text-blue-400 ${
-                    location.pathname === item.href ? "text-blue-400" : ""
-                  }`}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </nav>
-          </div>
-        )}
-      </div>
+        </div>
+      )}
     </header>
   );
 };
