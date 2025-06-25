@@ -7,6 +7,7 @@ import GetQuote from "./pages/GetQuote";
 // import AboutPage from "./pages/AboutPage";
 // import ContactUs from "./pages/ContactUs";
 // import Industries from "./pages/Industries";
+import IndustriesGrid from "./pages/IndustryPage";
 
 function App() {
   return (
@@ -16,10 +17,10 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/Services" element={<ServicesGrid />} />
         <Route path="/GetQuote" element={<GetQuote />} />
-
+       < Route path="/Industries" element={<IndustriesGrid />} />
         {/* <Route path="/AboutUs" element={<AboutPage />} />
         <Route path="/ContactUs" element={<ContactUs />} />
-        Route path="/Industries" element={<Industries />} /> */}
+     */}
       </Routes>
     </Router>
   );
