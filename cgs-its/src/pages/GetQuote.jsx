@@ -1,179 +1,177 @@
-import React, { useState } from "react";
+import React from 'react';
 
-const GetQuote = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    company: "",
-    serviceType: "",
-    projectDetails: "",
-    budget: "",
-    timeline: "",
-    additionalInfo: "",
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Implement email or API submission logic here
-    console.log("Form Submitted", formData);
-    alert("Thank you for your request! We'll get back to you soon.");
-  };
-
+export default function GetQuotePage() {
   return (
-    <div
-      className="min-h-screen bg-[#1e1e2f] text-white"
-      style={{ paddingTop: "6rem" }} // Adjusted for the fixed navbar
-    >
-      <div className="max-w-4xl mx-auto p-6">
-        <h1 className="text-4xl font-bold mb-6 text-center">Get a Quote</h1>
-        <p className="text-center text-gray-400 mb-8">
-          Please provide as much detail as possible so we can tailor our services to meet your needs.
-        </p>
-        <form
-          onSubmit={handleSubmit}
-          className="bg-[#2a2a3b] p-6 rounded-lg shadow-lg space-y-6"
-        >
-          {/* Name and Email */}
-          <div className="flex flex-wrap gap-4">
-            <div className="flex-1">
-              <label className="block text-sm font-medium mb-2">Name</label>
+    <div className="min-h-screen bg-black text-white overflow-hidden pt-24">
+      {/* Main Container */}
+      <div className="max-w-6xl mx-auto px-6 space-y-12">
+        {/* Header */}
+        <div className="text-center animate-fade-in-up">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
+            Request Your Quote
+          </h1>
+          <p className="text-gray-300 text-lg md:text-xl">
+            Fill out the form below and our team will get back to you shortly.
+          </p>
+        </div>
+
+        {/* Quote Form */}
+        <form className="space-y-8 animate-fade-in-up delay-200">
+          {/* Company & Contact */}
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label htmlFor="company" className="block text-gray-300 font-medium mb-2">
+                Company Name
+              </label>
               <input
+                id="company"
                 type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                className="w-full p-3 rounded bg-[#2e2e3f] border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-[#1e90ff]"
-                required
+                placeholder="Your Company"
+                className="w-full p-4 bg-gray-800 text-gray-200 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
               />
             </div>
-            <div className="flex-1">
-              <label className="block text-sm font-medium mb-2">Email</label>
+            <div>
+              <label htmlFor="contact" className="block text-gray-300 font-medium mb-2">
+                Contact Name
+              </label>
               <input
+                id="contact"
+                type="text"
+                placeholder="Your Name"
+                className="w-full p-4 bg-gray-800 text-gray-200 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block text-gray-300 font-medium mb-2">
+                Email Address
+              </label>
+              <input
+                id="email"
                 type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                className="w-full p-3 rounded bg-[#2e2e3f] border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-[#1e90ff]"
-                required
+                placeholder="you@company.com"
+                className="w-full p-4 bg-gray-800 text-gray-200 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
               />
             </div>
-          </div>
-
-          {/* Phone and Company */}
-          <div className="flex flex-wrap gap-4">
-            <div className="flex-1">
-              <label className="block text-sm font-medium mb-2">Phone</label>
+            <div>
+              <label htmlFor="phone" className="block text-gray-300 font-medium mb-2">
+                Phone Number
+              </label>
               <input
+                id="phone"
                 type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleInputChange}
-                className="w-full p-3 rounded bg-[#2e2e3f] border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-[#1e90ff]"
-                required
+                placeholder="(123) 456-7890"
+                className="w-full p-4 bg-gray-800 text-gray-200 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
               />
             </div>
-            <div className="flex-1">
-              <label className="block text-sm font-medium mb-2">Company</label>
-              <input
-                type="text"
-                name="company"
-                value={formData.company}
-                onChange={handleInputChange}
-                className="w-full p-3 rounded bg-[#2e2e3f] border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-[#1e90ff]"
-              />
-            </div>
-          </div>
-
-          {/* Service Type */}
-          <div>
-            <label className="block text-sm font-medium mb-2">Service Type</label>
-            <select
-              name="serviceType"
-              value={formData.serviceType}
-              onChange={handleInputChange}
-              className="w-full p-3 rounded bg-[#2e2e3f] border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-[#1e90ff]"
-              required
-            >
-              <option value="" disabled>
-                Select a service
-              </option>
-              <option value="IT Consulting">IT Consulting</option>
-              <option value="Recruiting">Recruiting</option>
-              <option value="Software Development">Software Development</option>
-              <option value="Other">Other</option>
-            </select>
           </div>
 
           {/* Project Details */}
           <div>
-            <label className="block text-sm font-medium mb-2">Project Details</label>
-            <textarea
-              name="projectDetails"
-              value={formData.projectDetails}
-              onChange={handleInputChange}
-              className="w-full p-3 rounded bg-[#2e2e3f] border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-[#1e90ff]"
-              rows={4}
-              required
-            ></textarea>
-          </div>
-
-          {/* Budget and Timeline */}
-          <div className="flex flex-wrap gap-4">
-            <div className="flex-1">
-              <label className="block text-sm font-medium mb-2">Estimated Budget</label>
-              <input
-                type="text"
-                name="budget"
-                value={formData.budget}
-                onChange={handleInputChange}
-                className="w-full p-3 rounded bg-[#2e2e3f] border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-[#1e90ff]"
-              />
-            </div>
-            <div className="flex-1">
-              <label className="block text-sm font-medium mb-2">Timeline</label>
-              <input
-                type="text"
-                name="timeline"
-                value={formData.timeline}
-                onChange={handleInputChange}
-                className="w-full p-3 rounded bg-[#2e2e3f] border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-[#1e90ff]"
-              />
-            </div>
-          </div>
-
-          {/* Additional Information */}
-          <div>
-            <label className="block text-sm font-medium mb-2">
-              Additional Information
+            <label htmlFor="details" className="block text-gray-300 font-medium mb-2">
+              Project Details
             </label>
             <textarea
-              name="additionalInfo"
-              value={formData.additionalInfo}
-              onChange={handleInputChange}
-              className="w-full p-3 rounded bg-[#2e2e3f] border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-[#1e90ff]"
-              rows={4}
-            ></textarea>
+              id="details"
+              rows={6}
+              placeholder="Tell us about your needs..."
+              className="w-full p-4 bg-gray-800 text-gray-200 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
+            />
           </div>
 
-          {/* Submit Button */}
-          <div className="text-center">
-            <button
-              type="submit"
-              className="px-6 py-3 bg-gradient-to-r from-[#1e90ff] to-[#0056b3] hover:from-[#0056b3] hover:to-[#1e90ff] text-white rounded shadow-lg transition"
-            >
-              Submit Quote Request
-            </button>
+          {/* Budget & Timeline */}
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label htmlFor="budget" className="block text-gray-300 font-medium mb-2">
+                Estimated Budget
+              </label>
+              <input
+                id="budget"
+                type="text"
+                placeholder="$5,000 - $10,000"
+                className="w-full p-4 bg-gray-800 text-gray-200 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              />
+            </div>
+            <div>
+              <label htmlFor="timeline" className="block text-gray-300 font-medium mb-2">
+                Desired Timeline
+              </label>
+              <input
+                id="timeline"
+                type="text"
+                placeholder="e.g. 3 months"
+                className="w-full p-4 bg-gray-800 text-gray-200 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              />
+            </div>
           </div>
+
+          {/* Services Checkbox */}
+          <div>
+            <span className="block text-gray-300 font-medium mb-2">
+              Services Interested In
+            </span>
+            <div className="grid sm:grid-cols-3 gap-4">
+              {[
+                'Staff Augmentation',
+                'Project Consulting',
+                'Managed Services',
+                'Direct Hire',
+                'On-Site Support',
+                'Remote Support'
+              ].map(service => (
+                <label key={service} className="flex items-center space-x-2">
+                  <input type="checkbox" className="w-5 h-5 text-red-500 bg-gray-800 border-gray-600 rounded focus:ring-red-400" />
+                  <span className="text-gray-200">{service}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* File Upload */}
+          <div>
+            <label htmlFor="file" className="block text-gray-300 font-medium mb-2">
+              Upload Supporting Documents
+            </label>
+            <input
+              id="file"
+              type="file"
+              className="w-full text-gray-200 bg-gray-800 border border-gray-600 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-gray-500"
+            />
+          </div>
+
+          {/* Submit */}
+          <button
+            type="submit"
+            className="w-full py-4 bg-gradient-to-r from-red-500 to-red-700 font-bold rounded-lg text-white hover:from-red-600 hover:to-red-800 transition-all"
+          >
+            Submit Quote Request
+          </button>
         </form>
       </div>
+
+      {/* Background Effects */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-gray-900 to-transparent rounded-full blur-3xl opacity-20 animate-pulse-slow"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-l from-gray-800 to-transparent rounded-full blur-3xl opacity-15 animate-pulse-slow delay-1000"></div>
+      </div>
+
+      {/* Animations CSS */}
+      <style jsx>{`
+        @keyframes fade-in-up {
+          from { opacity: 0; transform: translateY(30px); }
+          to   { opacity: 1; transform: translateY(0);  }
+        }
+        @keyframes pulse-slow {
+          0%,100% { opacity: 0.1; }
+          50%     { opacity: 0.3; }
+        }
+        .animate-fade-in-up {
+          animation: fade-in-up 0.8s ease-out forwards;
+        }
+        .animate-pulse-slow {
+          animation: pulse-slow 4s ease-in-out infinite;
+        }
+        .delay-200 { animation-delay: 200ms; }
+      `}</style>
     </div>
   );
-};
-
-export default GetQuote;
+}
