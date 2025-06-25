@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { RiMenuLine, RiCloseLine } from "react-icons/ri";
+import { RiMenuLine } from "react-icons/ri";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,30 +43,54 @@ const Navbar = () => {
     };
   }, []);
 
+  const handleLinkClick = () => {
+    setIsMenuOpen(false); // Close the menu when a link is clicked
+  };
+
   return (
     <header
-      className={`fixed top-6 left-0 right-0 z-50 flex justify-between items-center transition-transform duration-300 ${
+      className={`fixed left-0 right-0 z-50 transition-transform duration-300 ${
         isScrolledDown ? "-translate-y-32" : "translate-y-0"
       }`}
+      style={{
+        top: isMobileView ? (isMenuOpen ? "30vh" : "3vh") : "3vh", // Adjust for vertical positioning
+      }}
     >
       {isMobileView ? (
-        <div className="w-full px-6 flex justify-end">
+        <div className="w-full flex justify-end items-center px-6 py-4">
           <button
-            className="p-2 text-white"
+            className={`p-2 text-white rounded-full focus:outline-none ${
+              isMenuOpen ? "bg-white text-black" : "bg-black text-white"
+            }`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
+            style={{
+              position: "fixed",
+              right: "1rem",
+              top: "3vh", // Keep button at its original position
+              zIndex: 51, // Ensure it stays above other elements
+            }}
           >
-            {isMenuOpen ? <RiCloseLine size={24} /> : <RiMenuLine size={24} />}
+            <RiMenuLine
+              size={24}
+              style={{
+                transform: isMenuOpen ? "rotate(45deg)" : "rotate(0deg)",
+                transition: "transform 0.3s ease",
+              }}
+            />
           </button>
 
           {/* Fullscreen Menu */}
           {isMenuOpen && (
-            <div className="fixed inset-0 bg-black text-white z-50 flex flex-col items-center justify-center space-y-8">
+            <div
+              className="fixed inset-0 bg-black text-white z-50 flex flex-col items-center justify-center space-y-8"
+              style={{ top: 0 }}
+            >
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   to={item.href}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={handleLinkClick}
                   className="text-2xl font-semibold transition hover:text-gray-400"
                 >
                   {item.name}
@@ -79,11 +103,11 @@ const Navbar = () => {
         <nav
           className="p-4 rounded-full mx-auto"
           style={{
-            backgroundColor: "rgba(0, 0, 0, 0.5)", // Transparent pure black
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
             width: "fit-content",
             padding: "1rem 2rem",
-            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
-            backdropFilter: "blur(10px)", // Manual blur
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+            backdropFilter: "blur(10px)",
           }}
         >
           <div className="flex space-x-6">
