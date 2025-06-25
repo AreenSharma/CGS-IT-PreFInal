@@ -119,9 +119,9 @@ void main() {
 `;
 
 const Threads = ({
-  color = [1, 1, 1],
+  color = [.5, 1.5, 1],
   amplitude = 1,
-  distance = 0,
+  distance = -1,
   enableMouseInteraction = false,
   ...rest
 }) => {
@@ -207,15 +207,14 @@ const Threads = ({
     animationFrameId.current = requestAnimationFrame(update);
 
     return () => {
-      if (animationFrameId.current)
-        cancelAnimationFrame(animationFrameId.current);
+      cancelAnimationFrame(animationFrameId.current);
       window.removeEventListener("resize", resize);
 
       if (enableMouseInteraction) {
         container.removeEventListener("mousemove", handleMouseMove);
         container.removeEventListener("mouseleave", handleMouseLeave);
       }
-      if (container.contains(gl.canvas)) container.removeChild(gl.canvas);
+      container.removeChild(gl.canvas);
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
   }, [color, amplitude, distance, enableMouseInteraction]);

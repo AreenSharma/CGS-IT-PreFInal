@@ -37,22 +37,8 @@ const Hero = () => {
           zIndex: 1,
         }}
       >
-        <h1
-          style={{
-            fontSize: "3rem",
-            fontWeight: "bold",
-            animation: "fadeIn 2s ease-in-out",
-          }}
-        >
-          CGS IT
-        </h1>
-        <p
-          style={{
-            fontSize: "1.5rem",
-            marginTop: "0.5rem",
-            animation: "fadeIn 3s ease-in-out",
-          }}
-        >
+        <h1 style={{ fontSize: "3rem", fontWeight: "bold" }}>CGS IT</h1>
+        <p style={{ fontSize: "1.5rem", marginTop: "0.5rem" }}>
           Innovating the future of IT solutions
         </p>
       </div>
