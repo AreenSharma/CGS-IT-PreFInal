@@ -120,7 +120,7 @@ const ServicesGrid = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
-      <section className="pt-16 pb-16">
+      <section className="pt-25 pb-25">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">

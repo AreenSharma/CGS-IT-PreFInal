@@ -1,121 +1,126 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const OverviewSection = () => {
+  const slides = [
+    {
+      title: "Our Services",
+      content:
+        "Comprehensive IT solutions designed to accelerate your business growth and digital transformation journey.",
+    },
+    {
+      title: "Information Technology Consulting",
+      content:
+        "Strategic IT guidance to transform your business operations and drive digital innovation.",
+      items: [
+        "IT Strategy & Planning",
+        "Technology Assessments",
+        "Digital Transformation Guidance",
+        "Infrastructure Optimization",
+      ],
+    },
+    {
+      title: "Software Development",
+      content:
+        "Custom software solutions built with cutting-edge technologies to meet your unique business needs.",
+      items: [
+        "Custom Application Development",
+        "Web & Mobile Solutions",
+        "Software Modernization",
+        "API Integration",
+      ],
+    },
+    {
+      title: "IT Staffing & Recruiting",
+      content:
+        "Connect with top-tier IT professionals who can drive your projects to success.",
+      items: [
+        "Contract Staffing",
+        "Permanent Placement",
+        "Contract-to-Hire",
+        "Direct Sourcing",
+      ],
+    },
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
   const navigate = useNavigate();
+  const containerRef = useRef(null);
+
+  const handleNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "ArrowRight") handleNext();
+    if (e.key === "ArrowLeft") handlePrev();
+  };
+
+  const handleDragStart = (e) => {
+    containerRef.current.startX = e.clientX || e.touches[0].clientX;
+  };
+
+  const handleDragMove = (e) => {
+    if (!containerRef.current.startX) return;
+    containerRef.current.offsetX =
+      (e.clientX || e.touches[0].clientX) - containerRef.current.startX;
+  };
+
+  const handleDragEnd = () => {
+    if (containerRef.current.offsetX > 50) handlePrev();
+    if (containerRef.current.offsetX < -50) handleNext();
+    containerRef.current.startX = 0;
+    containerRef.current.offsetX = 0;
+  };
+
+  useEffect(() => {
+    const interval = setInterval(handleNext, 7000); // Auto-slide every 7 seconds
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
     <section
-      style={{
-        width: "100%",
-        height: "100vh",
-        backgroundColor: "#000",
-        color: "white",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        textAlign: "center",
-        padding: "2rem",
-        scrollSnapAlign: "start",
-        position: "relative",
-      }}
+      className="relative w-full h-screen bg-black text-white flex items-center justify-center"
+      style={{ scrollSnapAlign: "start" }}
     >
+      {/* Content */}
       <div
-        style={{
-          zIndex: 1,
-          maxWidth: "800px",
-          animation: "fadeIn 1.5s ease-in-out",
-        }}
+        ref={containerRef}
+        className="max-w-5xl px-10 py-8 text-left"
+        onMouseDown={handleDragStart}
+        onMouseMove={handleDragMove}
+        onMouseUp={handleDragEnd}
+        onTouchStart={handleDragStart}
+        onTouchMove={handleDragMove}
+        onTouchEnd={handleDragEnd}
       >
-        <h2
-          style={{
-            fontSize: "2.5rem",
-            fontWeight: "bold",
-            marginBottom: "1.5rem",
-            letterSpacing: "0.1em",
-            color: "#ff4500",
-          }}
-        >
-          Welcome to CGS-IT
-        </h2>
-        <p
-          style={{
-            fontSize: "1.2rem",
-            marginBottom: "2rem",
-            lineHeight: "1.8",
-            color: "#ddd",
-          }}
-        >
-          We specialize in IT Consulting, Recruiting, and Software Development.
-          Gain access to strategic staffing solutions, cutting-edge technology
-          services, and tailored outsourcing to drive your business forward.
+        <h2 className="text-6xl font-bold mb-6">{slides[currentSlide].title}</h2>
+        <p className="text-2xl text-gray-300 mb-8 leading-relaxed">
+          {slides[currentSlide].content}
         </p>
-        <div style={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
-          <button
-            onClick={() => navigate("/Services")}
-            style={{
-              padding: "0.8rem 2rem",
-              backgroundColor: "#ff4500",
-              color: "white",
-              fontSize: "1rem",
-              border: "none",
-              borderRadius: "8px",
-              cursor: "pointer",
-              transition: "transform 0.3s ease, box-shadow 0.3s ease",
-              boxShadow: "0 4px 6px rgba(255, 69, 0, 0.3)",
-            }}
-            onMouseOver={(e) => {
-              e.target.style.transform = "scale(1.05)";
-              e.target.style.boxShadow = "0 6px 12px rgba(255, 69, 0, 0.5)";
-            }}
-            onMouseOut={(e) => {
-              e.target.style.transform = "scale(1)";
-              e.target.style.boxShadow = "0 4px 6px rgba(255, 69, 0, 0.3)";
-            }}
-          >
-            Explore Services
-          </button>
-          <button
-            onClick={() => navigate("/AboutUs")}
-            style={{
-              padding: "0.8rem 2rem",
-              backgroundColor: "#222",
-              color: "#fff",
-              fontSize: "1rem",
-              border: "2px solid #ff4500",
-              borderRadius: "8px",
-              cursor: "pointer",
-              transition: "transform 0.3s ease, box-shadow 0.3s ease",
-              boxShadow: "0 4px 6px rgba(255, 69, 0, 0.3)",
-            }}
-            onMouseOver={(e) => {
-              e.target.style.transform = "scale(1.05)";
-              e.target.style.boxShadow = "0 6px 12px rgba(255, 69, 0, 0.5)";
-            }}
-            onMouseOut={(e) => {
-              e.target.style.transform = "scale(1)";
-              e.target.style.boxShadow = "0 4px 6px rgba(255, 69, 0, 0.3)";
-            }}
-          >
-            Learn More
-          </button>
-        </div>
+        {slides[currentSlide].items && (
+          <ul className="list-disc text-xl list-inside text-gray-400 space-y-3 mb-6">
+            {slides[currentSlide].items.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        )}
+        <button
+          onClick={() => navigate("/AboutUs")}
+          className="mt-8 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-lg text-2xl transition"
+        >
+          Read More
+        </button>
       </div>
-
-      <style>
-        {`
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-              transform: translateY(20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-        `}
-      </style>
     </section>
   );
 };
