@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Footer from '../components/Footer';
 import {
   Code, Users, Cog, TrendingUp,
   Clock, Award, Globe, Shield,
   Database, Server, Smartphone, CheckCircle
 } from 'lucide-react';
+import Navbar from '../components/Navbar';
 
 const ServiceCard = ({ service, index, activeService, setActiveService }) => {
   return (
@@ -254,6 +256,7 @@ const ServicesGrid = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </div>
   );
 };

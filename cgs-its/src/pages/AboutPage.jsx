@@ -42,6 +42,7 @@ export default function AboutUs() {
   ];
 
   return (
+    <>
     <section className="min-h-screen bg-black text-white pt-40 px-4 sm:px-8">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
         
@@ -97,9 +98,11 @@ export default function AboutUs() {
         {/* Right column: text carousel */}
         <TextCarousel slides={carouselSlides} interval={5000} />
       </div>
-      <div style={{ height: '5vh', backgroundColor: 'black', width: '100vw' }}></div>
-      <Footer/>
+      <div style={{ height: '15vh', backgroundColor: 'black', width: '100vw' }}></div>
+      
     </section>
+    <Footer/>
+    </>
 
   
   );

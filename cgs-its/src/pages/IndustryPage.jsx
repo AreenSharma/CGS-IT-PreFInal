@@ -1,6 +1,6 @@
 import React from 'react';
 import { Building2, Heart, Phone, Newspaper, ShoppingCart, Rocket } from 'lucide-react';
-
+import Footer from '../components/Footer';
 // IndustryCard Component
 const IndustryCard = ({ icon: Icon, title, description, keyAreas }) => {
   return (
@@ -136,6 +136,7 @@ const IndustriesGrid = () => {
 
 
       </div>
+      <Footer/>
     </div>
   );
 };

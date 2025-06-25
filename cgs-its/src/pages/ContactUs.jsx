@@ -1,18 +1,17 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 export default function ContactUsPage() {
   const navigate = useNavigate();
 
   const handleRedirect = () => {
-    navigate('/get-quote'); // Replace with your actual route
+    navigate('/GetQuote'); // Replace with your actual route
   };
 
   return (
     <div className="min-h-screen bg-black text-white p-8 overflow-hidden pt-24">
       {/* Added 'pt-24' for padding to prevent overlap with the fixed Navbar */}
-
-      {/* Main Container */}
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="mb-12 text-center animate-fade-in-up">
@@ -106,6 +105,9 @@ export default function ContactUsPage() {
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-gray-900 to-transparent rounded-full blur-3xl opacity-20 animate-pulse-slow"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-l from-gray-800 to-transparent rounded-full blur-3xl opacity-15 animate-pulse-slow delay-1000"></div>
       </div>
+
+      <div style={{ height: '15vh', backgroundColor: 'black', width: '100vw' }}></div>
+      <Footer />
     </div>
   );
 }

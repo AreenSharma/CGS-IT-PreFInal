@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Footer from '../components/Footer';
 export default function GetQuotePage() {
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden pt-24">
@@ -172,6 +172,8 @@ export default function GetQuotePage() {
         }
         .delay-200 { animation-delay: 200ms; }
       `}</style>
+      <div style={{ height: '15vh', backgroundColor: 'black', width: '100vw' }}></div>
+      <Footer/>
     </div>
   );
 }
