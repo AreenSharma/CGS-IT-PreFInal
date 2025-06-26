@@ -1,7 +1,7 @@
 import React from "react";
 
-import { useNavigate } from "react-router-dom";
-
+import { BriefcaseMedical, Banknote, Cpu, Factory, ShieldCheck, ShoppingCart } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 export const AboutSection = () => (
   <section className="h-auto mt-[10vh] bg-black text-white flex items-center justify-center px-6 py-16">
     <div className="max-w-5xl w-full text-left space-y-6">
@@ -71,6 +71,15 @@ export const ServicesSection = () => (
 export const IndustriesSection = () => {
   const navigate = useNavigate();
 
+  const industries = [
+    { icon: <BriefcaseMedical className="w-5 h-5 text-blue-500" />, text: 'Healthcare: Optimizing patient care with robust IT solutions' },
+    { icon: <Banknote className="w-5 h-5 text-green-400" />, text: 'Financial Services: Ensuring security and efficiency in operations' },
+    { icon: <Cpu className="w-5 h-5 text-purple-400" />, text: 'Technology: Delivering innovation for growth and scalability' },
+    { icon: <Factory className="w-5 h-5 text-yellow-400" />, text: 'Manufacturing: Enhancing processes through automation and insights' },
+    { icon: <ShieldCheck className="w-5 h-5 text-red-400" />, text: 'Government: Providing reliable and secure IT infrastructure' },
+    { icon: <ShoppingCart className="w-5 h-5 text-pink-400" />, text: 'Retail & E-Commerce: Boosting customer experience with smart solutions' },
+  ];
+
   return (
     <section className="h-auto mt-[10vh] bg-black text-white flex items-center justify-center px-6 py-16">
       <div className="max-w-5xl w-full text-left space-y-6">
@@ -80,13 +89,13 @@ export const IndustriesSection = () => {
           solutions tailored to meet the unique challenges of each sector. We work
           closely with our partners to deliver meaningful results.
         </p>
-        <ul className="text-gray-300 space-y-3 list-disc list-inside">
-          <li>Healthcare: Optimizing patient care with robust IT solutions</li>
-          <li>Financial Services: Ensuring security and efficiency in operations</li>
-          <li>Technology: Delivering innovation for growth and scalability</li>
-          <li>Manufacturing: Enhancing processes through automation and insights</li>
-          <li>Government: Providing reliable and secure IT infrastructure</li>
-          <li>Retail & E-Commerce: Boosting customer experience with smart solutions</li>
+        <ul className="space-y-4">
+          {industries.map(({ icon, text }, idx) => (
+            <li key={idx} className="flex items-start space-x-3 text-gray-300">
+              <span>{icon}</span>
+              <span>{text}</span>
+            </li>
+          ))}
         </ul>
         <button
           onClick={() => navigate("/Industries")}
