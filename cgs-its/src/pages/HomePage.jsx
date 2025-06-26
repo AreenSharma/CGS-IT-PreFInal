@@ -27,44 +27,34 @@ const HomePage = () => {
   };
 
   return (
-    <div className="bg-black text-white w-full h-screen overflow-hidden relative">
+    <div className="bg-black text-white w-full min-h-screen overflow-x-hidden relative">
+      {/* Fixed Navbar */}
       <Navbar />
 
-      {/* Optional: Dot Navigation */}
-      <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-50 flex flex-col space-y-3">
-        {Object.keys(sections).map((key, index) => (
-          <button
-            key={key}
-            onClick={() => scrollToSection(key)}
-            className="w-3 h-3 rounded-full bg-gray-500 hover:bg-blue-500 transition"
-            title={`Go to ${key}`}
-          ></button>
-        ))}
-      </div>
-
-      {/* Scrollable Container */}
-      <div className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
-        <section ref={sections.hero} className="snap-start">
+      {/* Main Scrollable Page Content */}
+      <div className="pt-16 overflow-y-auto">
+        <section ref={sections.hero}>
           <Hero />
         </section>
 
-        <section ref={sections.overview} className="snap-start">
+        <section ref={sections.overview}>
           <OverviewSection />
         </section>
 
-        <section ref={sections.services} className="snap-start">
+        {/* Uncomment this if you want Services back */}
+        {/* <section ref={sections.services}>
           <ServicesSection />
-        </section>
+        </section> */}
 
-        <section ref={sections.industries} className="snap-start">
+        <section ref={sections.industries}>
           <IndustriesSection />
         </section>
 
-        <section ref={sections.about} className="snap-start">
+        <section ref={sections.about}>
           <AboutSection />
         </section>
 
-        <section ref={sections.footer} className="snap-start">
+        <section ref={sections.footer}>
           <Footer />
         </section>
       </div>
