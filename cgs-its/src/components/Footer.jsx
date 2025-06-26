@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RiMailLine, RiPhoneLine, RiMapPinLine } from "react-icons/ri";
 
 const Footer = () => {
+  const navigate = useNavigate(); 
   return (
     <footer className="bg-gray-900 text-gray-300 py-12">
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -71,7 +72,7 @@ const Footer = () => {
           <p className="text-gray-400 mb-4">
             Ready to transform your technology team? Get in touch with our expert recruiters and consultants today.
           </p>
-          <button className="w-full py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition">
+          <button  onClick={() => navigate("/ContactUs")} className="w-full py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition">
             Contact Us
           </button>
         </div>

@@ -1,17 +1,23 @@
+import React from "react";
+
+import { useNavigate } from "react-router-dom";
+
 export const AboutSection = () => (
-  <section className="snap-start h-[60vh] mt-[10vh] bg-black text-white flex flex-col items-center justify-center px-6 text-center space-y-6">
-    <h2 className="text-4xl font-bold">About CGS IT</h2>
-    <p className="text-lg max-w-3xl text-gray-300">
-      At CGS IT, we specialize in delivering world-class IT staffing and consulting services. 
-      Our mission is to empower organizations with tailored technology solutions that drive innovation 
-      and efficiency, ensuring they stay ahead in today's competitive landscape.
-    </p>
-    <a
-      href="/AboutUs"
-      className="px-8 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition"
-    >
-      Learn More About Us
-    </a>
+  <section className="h-auto mt-[10vh] bg-black text-white flex items-center justify-center px-6 py-16">
+    <div className="max-w-5xl w-full text-left space-y-6">
+      <h2 className="text-4xl font-bold">About CGS IT</h2>
+      <p className="text-lg text-gray-300">
+        At CGS IT, we specialize in delivering world-class IT staffing and consulting services.
+        Our mission is to empower organizations with tailored technology solutions that drive
+        innovation and efficiency, ensuring they stay ahead in today's competitive landscape.
+      </p>
+      <a
+        href="/AboutUs"
+        className="inline-block px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition"
+      >
+        Learn More About Us
+      </a>
+    </div>
   </section>
 );
 
@@ -37,25 +43,58 @@ export const ServicesSection = () => (
   </section>
 );
 
-export const IndustriesSection = () => (
-  <section className="snap-start h-screen bg-black text-white flex flex-col items-center justify-center px-6 text-center space-y-6">
-    <h2 className="text-4xl font-bold">Industries We Serve</h2>
-    <p className="text-lg max-w-3xl text-gray-300">
-      With years of experience across multiple industries, CGS IT offers specialized solutions tailored to meet the unique challenges of each sector. We work closely with our partners to deliver meaningful results.
-    </p>
-    <ul className="text-gray-300 space-y-3 max-w-3xl">
-      <li>• Healthcare: Optimizing patient care with robust IT solutions</li>
-      <li>• Financial Services: Ensuring security and efficiency in operations</li>
-      <li>• Technology: Delivering innovation for growth and scalability</li>
-      <li>• Manufacturing: Enhancing processes through automation and insights</li>
-      <li>• Government: Providing reliable and secure IT infrastructure</li>
-      <li>• Retail & E-Commerce: Boosting customer experience with smart solutions</li>
-    </ul>
-    <a
-      href="/Industries"
-      className="px-8 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition"
-    >
-      Discover Our Industries
-    </a>
-  </section>
-);
+// export const IndustriesSection = () => (
+//   <section className="snap-start h-screen bg-black text-white flex flex-col items-center justify-center px-6 text-center space-y-6">
+//     <h2 className="text-4xl font-bold">Industries We Serve</h2>
+//     <p className="text-lg max-w-3xl text-gray-300">
+//       With years of experience across multiple industries, CGS IT offers specialized solutions tailored to meet the unique challenges of each sector. We work closely with our partners to deliver meaningful results.
+//     </p>
+//     <ul className="text-gray-300 space-y-3 max-w-3xl">
+//       <li>• Healthcare: Optimizing patient care with robust IT solutions</li>
+//       <li>• Financial Services: Ensuring security and efficiency in operations</li>
+//       <li>• Technology: Delivering innovation for growth and scalability</li>
+//       <li>• Manufacturing: Enhancing processes through automation and insights</li>
+//       <li>• Government: Providing reliable and secure IT infrastructure</li>
+//       <li>• Retail & E-Commerce: Boosting customer experience with smart solutions</li>
+//     </ul>
+//     <a
+//       href="/Industries"
+//       className="px-8 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold transition"
+//     >
+//       Discover Our Industries
+//     </a>
+//   </section>
+// );
+
+
+
+export const IndustriesSection = () => {
+  const navigate = useNavigate();
+
+  return (
+    <section className="h-auto mt-[10vh] bg-black text-white flex items-center justify-center px-6 py-16">
+      <div className="max-w-5xl w-full text-left space-y-6">
+        <h2 className="text-4xl font-bold">Industries We Serve</h2>
+        <p className="text-lg text-gray-300">
+          With years of experience across multiple industries, CGS IT offers specialized
+          solutions tailored to meet the unique challenges of each sector. We work
+          closely with our partners to deliver meaningful results.
+        </p>
+        <ul className="text-gray-300 space-y-3 list-disc list-inside">
+          <li>Healthcare: Optimizing patient care with robust IT solutions</li>
+          <li>Financial Services: Ensuring security and efficiency in operations</li>
+          <li>Technology: Delivering innovation for growth and scalability</li>
+          <li>Manufacturing: Enhancing processes through automation and insights</li>
+          <li>Government: Providing reliable and secure IT infrastructure</li>
+          <li>Retail & E-Commerce: Boosting customer experience with smart solutions</li>
+        </ul>
+        <button
+          onClick={() => navigate("/Industries")}
+          className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition"
+        >
+          Discover Our Industries
+        </button>
+      </div>
+    </section>
+  );
+};

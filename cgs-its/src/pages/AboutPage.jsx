@@ -96,7 +96,7 @@ export default function AboutUs() {
         </div>
 
         {/* Right column: text carousel */}
-        <TextCarousel slides={carouselSlides} interval={5000} />
+        <TextCarousel slides={carouselSlides} interval={2000} />
       </div>
       <div style={{ height: '15vh', backgroundColor: 'black', width: '100vw' }}></div>
       
