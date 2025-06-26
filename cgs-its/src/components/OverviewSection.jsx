@@ -7,7 +7,7 @@ import {
   Users,
 } from "lucide-react";
 
-export const OverviewSection = () => {
+const OverviewSection = () => {
   const slides = [
     {
       title: "Our Services 🛠️",
@@ -133,3 +133,5 @@ export const OverviewSection = () => {
     </section>
   );
 };
+
+export default OverviewSection;

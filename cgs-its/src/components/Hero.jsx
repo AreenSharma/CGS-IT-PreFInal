@@ -18,7 +18,7 @@ const Hero = () => {
         alt="CGS IT Logo"
         style={{
           position: "absolute",
-          top: "-7.75rem",
+          top: "-3.70rem",
           left: "2rem",
           height: "15rem",
           maxWidth: "12rem",
