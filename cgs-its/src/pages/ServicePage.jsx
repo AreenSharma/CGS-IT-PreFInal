@@ -186,7 +186,7 @@ const ServicesGrid = () => {
               <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform">
                 <Award className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-4">24-Month Commitment</h3>
+              <h3 className="text-xl font-bold mb-4">12-Month Commitment</h3>
               <p className="text-gray-300">Long-term partnership options ensuring continuity and sustained success for your projects.</p>
             </div>
 
