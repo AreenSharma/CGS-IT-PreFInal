@@ -47,17 +47,6 @@ const ServiceCard = ({ service, index, activeService, setActiveService }) => {
         </ul>
 
         <div className="mt-8">
-          <button className="text-orange-400 font-semibold hover:text-orange-300 transition-colors flex items-center group">
-            Learn More
-            <svg
-              className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
         </div>
       </div>
     </div>
@@ -194,7 +183,7 @@ const ServicesGrid = () => {
               <div className="w-16 h-16 bg-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-transform">
                 <Globe className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold mb-4">Atlanta-Based, National Reach</h3>
+              <h3 className="text-xl font-bold mb-4">Delaware-Based, National Reach</h3>
               <p className="text-gray-300">Local expertise with the capability to serve clients across the United States.</p>
             </div>
           </div>
@@ -248,7 +237,7 @@ const ServicesGrid = () => {
               Get Started Today
             </button>
             <button
-              onClick={() => navigate('/GetQuote')}
+              onClick={() => navigate('/ContactUs')}
               className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-black transition-all transform hover:scale-105"
             >
               Schedule Consultation

@@ -57,7 +57,7 @@ const Navbar = () => {
       }}
     >
       {isMobileView ? (
-        <div className="w-full flex justify-end items-center px-6 py-4">
+        <div className="w-full flex justify-between items-center px-6 py-4">
           <button
             className="p-3 focus:outline-none border-none bg-transparent"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -138,32 +138,42 @@ const Navbar = () => {
           )}
         </div>
       ) : (
-        <nav
-          className="p-4 rounded-full mx-auto"
-          style={{
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            width: "fit-content",
-            padding: "1rem 2rem",
-            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-            backdropFilter: "blur(10px)",
-          }}
-        >
-          <div className="flex space-x-6">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                to={item.href}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
-                  location.pathname === item.href
-                    ? "bg-white/20 text-white"
-                    : "text-white hover:bg-white/10"
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-        </nav>
+        <div className="flex items-center justify-center w-full">
+          {/* Logo for desktop - positioned on the left */}
+          <Link 
+            to="/" 
+            className="nav-logo absolute left-8"
+            style={{ zIndex: 51 }}
+          >
+          </Link>
+
+          <nav
+            className="p-4 rounded-full mx-auto"
+            style={{
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              width: "fit-content",
+              padding: "1rem 2rem",
+              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+              backdropFilter: "blur(10px)",
+            }}
+          >
+            <div className="flex space-x-6">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+                    location.pathname === item.href
+                      ? "bg-white/20 text-white"
+                      : "text-white hover:bg-white/10"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </nav>
+        </div>
       )}
     </header>
   );

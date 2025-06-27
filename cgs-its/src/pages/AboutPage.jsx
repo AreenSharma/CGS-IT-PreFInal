@@ -51,13 +51,13 @@ export default function AboutUs() {
               ))}
             </div>
 
-            <div>
+            {/* <div>
               <Link to="/GetQuote">
                 <button className="px-8 py-3 bg-gray-200 hover:bg-gray-300 text-black font-medium rounded-lg transition">
                   Get a Quote
                 </button>
               </Link>
-            </div>
+            </div> */}
           </div>
 
           {/* Right column: image instead of carousel */}

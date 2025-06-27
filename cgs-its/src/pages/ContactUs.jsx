@@ -1,6 +1,93 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
-import Footer from '../components/Footer';
+import { RiMailLine, RiPhoneLine, RiMapPinLine } from "react-icons/ri";
+
+// Footer Component
+const Footer = () => {
+  return (
+    <footer className="bg-gray-900 text-gray-300 py-12">
+      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* About Section */}
+        <div>
+          <h3 className="text-white text-lg font-semibold mb-4">About CGS IT</h3>
+          <p className="text-gray-400 text-sm">
+            CGS IT LLC is a premier IT staffing and consulting company specializing in connecting exceptional technology talent with innovative organizations.
+          </p>
+        </div>
+
+        {/* Navigation Links */}
+        <div>
+          <h3 className="text-white text-lg font-semibold mb-4">Quick Links</h3>
+          <ul className="space-y-2">
+            {[
+              { name: "Home", href: "/" },
+              { name: "About Us", href: "/AboutUs" },
+              { name: "Services", href: "/Services" },
+              { name: "Industries", href: "/Industries" },
+              { name: "Contact Us", href: "/ContactUs" },
+              { name: "Get Quote", href: "/GetQuote" },
+            ].map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="hover:text-white transition-colors"
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Contact Info */}
+        <div>
+          <h3 className="text-white text-lg font-semibold mb-4">Contact Us</h3>
+          <ul className="space-y-4">
+            <li className="flex items-start">
+              <RiMailLine className="w-5 h-5 text-red-500 mr-3" />
+              <span>
+                <strong>Email:</strong> <a href="mailto:Recruiter@cgs-its.com" className="hover:text-white transition-colors">Recruiter@cgs-its.com</a>
+              </span>
+            </li>
+            <li className="flex items-start">
+              <RiPhoneLine className="w-5 h-5 text-red-500 mr-3" />
+              <span>
+                <strong>Phone:</strong> <a href="tel:8888855368" className="hover:text-white transition-colors">888-885-5368</a>
+              </span>
+            </li>
+            <li className="flex items-start">
+              <RiMapPinLine className="w-5 h-5 text-red-500 mr-3" />
+              <span>
+                <strong>Address:</strong> <br />
+                1212 N. Orange St. <br />
+                Wilmington, DE 19801
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Let's Connect Section */}
+        <div>
+          <h3 className="text-white text-lg font-semibold mb-4">Let's Connect</h3>
+          <p className="text-gray-400 mb-4">
+            Ready to transform your technology team? Get in touch with our expert recruiters and consultants today.
+          </p>
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="w-full py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition"
+          >
+            Contact Us
+          </button>
+        </div>
+      </div>
+
+      {/* Footer Bottom */}
+      <div className="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+        © {new Date().getFullYear()} CGS IT LLC. All rights reserved.
+      </div>
+    </footer>
+  );
+};
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -22,6 +109,9 @@ export default function ContactForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.fullName && formData.email) {
+      // Show alert message
+      alert("Thanks we will get back shortly.");
+      
       setIsSubmitted(true);
       setTimeout(() => setIsSubmitted(false), 3000);
       setFormData({ fullName: '', email: '', company: '', message: '' });
@@ -29,8 +119,8 @@ export default function ContactForm() {
   };
 
   return (
-    <>
-      <div className="min-h-screen bg-black text-white flex items-center justify-center p-4 relative">
+    <div className="bg-black text-white">
+      <div className="min-h-screen flex items-center justify-center p-4 relative">
         <div className="max-w-6xl w-full grid lg:grid-cols-2 gap-12 lg:gap-20">
           {/* Left Section - Contact Info */}
           <div className="space-y-8 lg:pr-8">
@@ -123,7 +213,7 @@ export default function ContactForm() {
                       </div>
                       <div className="absolute text-purple-300 font-medium translate-y-16 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-in-out text-sm leading-tight w-full">
                         <div>🌎 Nationwide Excellence</div>
-                        <div>🚀 From Tampa to everywhere</div>
+                        <div>✈️ From Tampa to everywhere</div>
                         <div className="text-xs text-purple-200 mt-1">Technology solutions delivered</div>
                       </div>
                     </div>
@@ -270,6 +360,6 @@ export default function ContactForm() {
 
       {/* Footer placed outside main container */}
       <Footer />
-    </>
+    </div>
   );
 }
